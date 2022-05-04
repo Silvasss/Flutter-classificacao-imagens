@@ -33,7 +33,8 @@ class _modeloState extends State<modelo> {
     String resp;
 
     // Carregar o modelo e a label
-    resp = (await Tflite.loadModel(model: 'assets/model/model.tflite', labels: "assets/model/labels2.txt", numThreads: 6))!;
+    //resp = (await Tflite.loadModel(model: 'assets/model/model.tflite', labels: "assets/model/labels2.txt", numThreads: 6))!;
+    resp = (await Tflite.loadModel(model: 'assets/model/tflite_model.tflite', labels: "assets/model/labels3.txt", numThreads: 6))!;
     /*
     numThreads: 1, // defaults to 1
     isAsset: true, // defaults to true, set to false to load resources outside assets
