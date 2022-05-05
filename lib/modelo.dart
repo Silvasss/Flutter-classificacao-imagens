@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image/image.dart' as image1;
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 
@@ -122,7 +123,19 @@ class _modeloState extends State<modelo> {
 
     File image = File(pickedFile!.path);
 
-    imageClassification(image);
+    // decodeImage will identify the format of the image and use the appropriate decode
+    final image2 = image1.decodeImage(image.readAsBytesSync())!;
+
+    // Image redimensionada e recortada quadrada
+    final newImage = image1.copyResizeCropSquare(image2, 24);
+
+    final newImage2 = image1.grayscale(newImage);
+
+    image.writeAsBytesSync(image1.encodeJpg(newImage2));
+
+    var imagem = File(image.path);
+
+    imageClassification(imagem);
   }
 
 }
