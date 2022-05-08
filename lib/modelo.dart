@@ -66,6 +66,7 @@ class _modeloState extends State<modelo> {
     final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
     File image = File(pickedFile!.path);
+
     // Image no display do aplicativo
     _image = image;
 
@@ -77,21 +78,20 @@ class _modeloState extends State<modelo> {
 
     final newImage2 = image1.grayscale(newImage);
 
+    // Abre o arquivo, grava a lista de bytes nele e fecha o arquivo
     image.writeAsBytesSync(image1.encodeJpg(newImage2));
 
     // Upload de um texto sem image
     //print(await clientService.uploadText());
 
     // Upload de uma imagem com texto
-    print(await clientService.uploadImage(image));
+    await clientService.uploadImage(image);
 
     // Lista para os dados retornados do Django
     var lista = [];
 
     // Chama o servidor django
     lista.add(await clientService.getAllDados());
-
-    //print(lista[0][0]['boby']);
 
     _results = lista[0][0]['boby'];
   }
