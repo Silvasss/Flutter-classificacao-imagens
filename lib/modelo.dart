@@ -6,12 +6,14 @@ import 'package:image/image.dart' as image1;
 import 'package:image_picker/image_picker.dart';
 import 'package:teste/client.dart';
 
+
 class modelo extends StatefulWidget {
   const modelo({Key? key}) : super(key: key);
 
   @override
   _modeloState createState() => _modeloState();
 }
+
 
 class _modeloState extends State<modelo> {
   late File _image;
@@ -29,14 +31,9 @@ class _modeloState extends State<modelo> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Image Classification"),
+          title: const Text("Image Classification"),
           centerTitle: true,
         ),
-        /*
-      body: (imageSelect)?Center(
-        child: Image.asset(_image.path),
-      ),
-      */
 
         body: ListView(
           children: [
